@@ -1,4 +1,3 @@
-
 <?php
 include 'database.php';
 $id= $_GET['updateid'];
@@ -12,6 +11,7 @@ $address= $row['address'];
 $dob= $row['dob'];
 $password= $row['password'];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,28 +42,36 @@ $password= $row['password'];
   <div class="form-group col-md-6">
       <label for="inputEmail4">First Name</label>
       <input type="text" name="first_name" value = "<?php echo "$first_name"?>" class="form-control" id="inputEmail4" placeholder="First Name">
+      <p class= "errror"><?php if(isset($_GET['first_name'])){echo " *Enter First Name"; } ?></p>
     </div>
     <div class="form-group col-md-6">
       <label for="inputEmail4">Second Name</label>
       <input type="text"  name="second_name" value = "<?php echo "$second_name"?>" class="form-control" id="inputEmail4" placeholder="Second Name">
+      <p class= "errror"><?php if(isset($_GET['second_name'])){echo " *Enter Last  name"; } ?></p>
+
     </div>
     <div class="form-group col-md-6">
       <label for="inputEmail4">Email</label>
       <input type="email"  name="email"  value = "<?php echo "$email"?>" class="form-control" id="inputEmail4" placeholder="Email">
+      <p class= "errror"><?php if(isset($_GET['email'])){echo " *Enter email"; } ?></p>
+
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Password</label>
       <input type="password" name="password" value = "<?php echo "$password"?>"  class="form-control" id="inputPassword4" placeholder="Password">
+      <p class= "errror"><?php if(isset($_GET['password'])){echo "*Enter password"; } ?></p>
     </div>
   </div>
   <div class="form-group">
     <label for="inputAddress">Address</label>
     <input type="text" name="address"  value = "<?php echo "$address"?>" class="form-control" id="inputAddress" placeholder="1234 Main St">
-  </div>
+    <p class= "errror"><?php if(isset($_GET['address'])){echo " *Enter Address"; } ?></p>
+</div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCity">Date of birth</label>
       <input type="date" name="dob" value = "<?php echo "$dob"?>"  class="form-control" id="inputCity">
+      <p class= "errror"><?php if(isset($_GET['dob'])){echo "*Enter Date of birth"; } ?></p>
     </div>
     <br>
     

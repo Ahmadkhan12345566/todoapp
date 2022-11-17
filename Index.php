@@ -19,7 +19,8 @@ include 'connect.php';
 <div class="container">
     <div class="row">
         <div class="btn float-right .text-right">
-            <button type="button" class="btn btn-primary">Add record</button>
+            <a href="register.php"><button type="button" class="btn btn-primary">Add record</button>
+</a>
         
         </div>
     </div>

@@ -1,5 +1,11 @@
 .header-btn{
     margin: 5px;
     color: green;
-    align-items: flex-end;
+    align-items: center;
+    float: right;
+    padding-right: 650px;
+}
+.errror{
+    color: red;
+    
 }
