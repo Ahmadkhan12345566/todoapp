@@ -9,37 +9,49 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-    
-<form action="connect.php" method = "post">
-<p>Enter your First Name</p>
-<input type="text" name="first_name" placeholder="Enter First Name" required>
-<br>
-<p>Enter your Second Name</p>
-<input type="text" name="second_name" placeholder="Enter Second Name" required >
-<br>
-<p>Enter your email</p>
-<input type="email" name="email" placeholder="enter your email" required>
-<br>
-<p>Enter your address</p>
-<textarea name="address" id="" cols="30" rows="5"  required></textarea>
-<p>Enter your Date of birth</p>
-<input type="date" name="dob" placeholder="enter your date of birth" required>
-<br>
 
-<p>Enter password</p>
-
-
-<input type="password" name="password" required>
-<button type="submit" name="submit">Submit</button>
-</form>
-</div>
 <br>
 <br>
 
-<div class="container">
+<div class="col-md-12 text-center">
 
 <a href="index.php"><button class="btn btn-primary"> click here to display record </button></a>
+</div>
+
+
+<div class = "container">
+<form  action ="connect.php" method= "post">
+  <div class="form-row">
+  <div class="form-group col-md-6">
+      <label for="inputEmail4">First Name</label>
+      <input type="text" name="first_name" class="form-control" id="inputEmail4" placeholder="First Name" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Second Name</label>
+      <input type="text"  name="second_name" class="form-control" id="inputEmail4" placeholder="Second Name" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email"  name="email"  class="form-control" id="inputEmail4" placeholder="Email" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <input type="password" name="password" class="form-control" id="inputPassword4" placeholder="Password" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" name="address" class="form-control" id="inputAddress" placeholder="1234 Main St" required>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">Date of birth</label>
+      <input type="date" name="dob"  class="form-control" id="inputCity" required>
+    </div>
+    <br>
+    
+  <button type="submit" name = "register_form" class="btn btn-primary">Sign in</button>
+</form>
 </div>
 
 </body>

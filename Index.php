@@ -16,10 +16,13 @@ include 'connect.php';
     <title>Document</title>
 </head>
 <body>
-    
-
-    <br>
-    <br>
+<div class="container">
+    <div class="row">
+        <div class="btn float-right .text-right">
+            <button type="button" class="btn btn-primary">Add record</button>
+        
+        </div>
+    </div>
     <table class="table table-dark table-striped">
         <thead>
             <tr>
@@ -81,11 +84,6 @@ include 'connect.php';
 </table>
 
 
-<div class="fa fa-align-center" aria-hidden>
-        <a href="register.php">
-        <button   type="button" name="" id="" class="btn btn-primary" btn-lg btn-block>  Add record</button>
-        </a>
-    </div>
-    
+</div>
 </body>
 </html>
