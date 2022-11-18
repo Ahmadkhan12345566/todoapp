@@ -34,6 +34,37 @@ include "database.php";
     else{
         $password= $_POST['password'];
     }
+    if(empty($_FILES['profile_image'])){
+        header('location:register.php?profile_image');
+        exit();
+    }
+    else{
+        $profile_image= $_FILES['profile_image'];
+        //saving profile details in variable
+        $file_name =$profile_image['name'];
+        $file_error =$profile_image['error'];
+        $file_temp= $profile_image['tmp_name'];
+        //separating extension from file name
+        $file_ext = explode('.',$file_name);
+        
+        //converting file to lowercase
+        
+        
+
+
+        $file_check = strtolower(end($file_ext));
+        $newfilename = round(microtime(true)) . '.' . end($file_ext);
+
+        //
+        $file_ext_stored = array('jpg','png','jpeg');
+
+        if(in_array($file_check,$file_ext_stored)){
+            $destination_file = 'profile_images/'.$file_name;
+            $uploaded_file = move_uploaded_file($_FILES["file"]["tmp_name"], "upload/" . $newfilename);
+            
+        }
+    }
+    
     
     if(empty($_POST['address'])){
         header('location:register.php?address');
@@ -51,8 +82,8 @@ include "database.php";
     }
     
 
-    $sql = "INSERT INTO users (first_name, second_name,email,address,dob,password)
-     value('$first_name', '$second_name','$email','$address','$dob', '$password')";
+    $sql = "INSERT INTO users (first_name, second_name,email,profile_img,address,dob,password)
+     value('$first_name', '$second_name','$email','$uploaded_file','$address','$dob', '$password')";
      $result = mysqli_query($con,$sql);
      if($result)
      {
@@ -85,7 +116,7 @@ include "database.php";
         $id=$_POST['id'];
         if(empty($_POST['first_name'])){
             
-            $_SESSION['first_name']= "Enter name";
+            $_SESSION['first_name']= "*Enter name";
             header('location:update.php?updateid='.$id.'');
             exit();
         }
@@ -94,7 +125,7 @@ include "database.php";
         }
         if(empty($_POST['second_name'])){
             
-            $_SESSION['second_name']= "Enter Second Name";
+            $_SESSION['second_name']= "*Enter Second Name";
             header('location:update.php?updateid='.$id.'');
             exit();
         }
@@ -103,7 +134,7 @@ include "database.php";
             }
          if(empty($_POST['email'])){
             
-            $_SESSION['email']= "Enter Email";
+            $_SESSION['email']= "*Enter Email";
             header('location:update.php?updateid='.$id.'');
             exit();
         }
@@ -112,7 +143,7 @@ include "database.php";
         }
         if(empty($_POST['address'])){
             
-            $_SESSION['address']= "Enter Address";
+            $_SESSION['address']= "*Enter Address";
             header('location:update.php?updateid='.$id.'');
             exit();
         }
@@ -121,7 +152,7 @@ include "database.php";
         }
         if(empty($_POST['dob'])){
             
-            $_SESSION['dob']= "Enter Date of Birth";
+            $_SESSION['dob']= "*Enter Date of Birth";
             header('location:update.php?updateid='.$id.'');
             exit();
         }
@@ -130,7 +161,7 @@ include "database.php";
         }
         if(empty($_POST['password'])){
             
-            $_SESSION['password']= "Enter Password";
+            $_SESSION['password']= "*Enter Password";
             header('location:update.php?updateid='.$id.'');
             exit();
         }

@@ -21,7 +21,7 @@
 
 
 <div class = "container">
-<form  action ="connect.php" method= "post">
+<form  action ="connect.php" method= "post" enctype="multipart/form-data">
   <div class="form-row">
   <div class="form-group col-md-6">
       <label for="inputEmail4">First Name</label>
@@ -47,6 +47,12 @@
 
     </div>
   </div>
+  <div class="form-group col-md-6">
+      <label for="inputEmail4">Add Profile Image</label>
+      <input type="file"  name="profile_image" class="form-control" id="inputimage"  >
+      <p class= "errror"><?php if(isset($_GET['profile_image'])){echo " *Please Select picture"; } ?></p>
+
+    </div>
   <div class="form-group">
     <label for="inputAddress">Address</label>
     <input type="text" name="address" class="form-control" id="inputAddress" placeholder="1234 Main St" >

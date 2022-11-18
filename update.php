@@ -11,6 +11,7 @@ $second_name= $row['second_name'];
 $email= $row['email'];
 $address= $row['address'];
 $dob= $row['dob'];
+$profile_image= $row['profile_img'];
 $password= $row['password'];
 
 
