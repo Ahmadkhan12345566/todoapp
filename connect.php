@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "database.php";
 
 //adding data to the table
@@ -82,11 +83,61 @@ include "database.php";
     if(isset($_POST['update_form'])){
         
         $id=$_POST['id'];
+        if(empty($_POST['first_name'])){
+            
+            $_SESSION['first_name']= "Enter name";
+            header('location:update.php?updateid='.$id.'');
+            exit();
+        }
+        else{
         $first_name= $_POST['first_name'];
-        $second_name= $_POST['second_name'];
-        $email= $_POST['email'];
-        $address= $_POST['address'];
-        $dob= $_POST['dob'];
+        }
+        if(empty($_POST['second_name'])){
+            
+            $_SESSION['second_name']= "Enter Second Name";
+            header('location:update.php?updateid='.$id.'');
+            exit();
+        }
+        else{
+            $second_name= $_POST['second_name'];
+            }
+         if(empty($_POST['email'])){
+            
+            $_SESSION['email']= "Enter Email";
+            header('location:update.php?updateid='.$id.'');
+            exit();
+        }
+        else{
+            $email= $_POST['email'];
+        }
+        if(empty($_POST['address'])){
+            
+            $_SESSION['address']= "Enter Address";
+            header('location:update.php?updateid='.$id.'');
+            exit();
+        }
+        else{
+            $address= $_POST['address'];
+        }
+        if(empty($_POST['dob'])){
+            
+            $_SESSION['dob']= "Enter Date of Birth";
+            header('location:update.php?updateid='.$id.'');
+            exit();
+        }
+        else{
+            $dob= $_POST['dob'];
+        }
+        if(empty($_POST['password'])){
+            
+            $_SESSION['password']= "Enter Password";
+            header('location:update.php?updateid='.$id.'');
+            exit();
+        }
+        else{
+            $password= $_POST['password'];
+        }
+        
         $password= $_POST['password'];
     
         $sql = "UPDATE users set  first_name= '$first_name', second_name='$second_name', email='$email', address='$address',dob='$dob', password='$password' where id= $id";

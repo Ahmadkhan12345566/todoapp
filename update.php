@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include 'database.php';
 $id= $_GET['updateid'];
 $sql= "SELECT * FROM users WHERE id=$id";
@@ -10,6 +12,9 @@ $email= $row['email'];
 $address= $row['address'];
 $dob= $row['dob'];
 $password= $row['password'];
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -24,9 +29,8 @@ $password= $row['password'];
 </head>
 <body>
 <br>
-<div class ="header-btn" >
-
-<a href="index.php"><button > click here to display record </button></a>
+<div class="col-md-12 text-center">
+<a href="index.php"><button class="btn btn-primary" >Display Record</button></a>
 </div>
 <div class="container">
 
@@ -42,36 +46,61 @@ $password= $row['password'];
   <div class="form-group col-md-6">
       <label for="inputEmail4">First Name</label>
       <input type="text" name="first_name" value = "<?php echo "$first_name"?>" class="form-control" id="inputEmail4" placeholder="First Name">
-      <p class= "errror"><?php if(isset($_GET['first_name'])){echo " *Enter First Name"; } ?></p>
+      <p class= "errror"><?php 
+if(isset($_SESSION['first_name'])) {
+    $message = $_SESSION['first_name'];
+    unset($_SESSION['first_name']);
+    echo $message;
+}?></p>
     </div>
     <div class="form-group col-md-6">
       <label for="inputEmail4">Second Name</label>
       <input type="text"  name="second_name" value = "<?php echo "$second_name"?>" class="form-control" id="inputEmail4" placeholder="Second Name">
-      <p class= "errror"><?php if(isset($_GET['second_name'])){echo " *Enter Last  name"; } ?></p>
+      <p class= "errror"><?php if(isset($_SESSION['second_name'])) {
+    $message = $_SESSION['second_name'];
+    unset($_SESSION['second_name']);
+    echo $message;
+}?></p>
 
     </div>
     <div class="form-group col-md-6">
       <label for="inputEmail4">Email</label>
       <input type="email"  name="email"  value = "<?php echo "$email"?>" class="form-control" id="inputEmail4" placeholder="Email">
-      <p class= "errror"><?php if(isset($_GET['email'])){echo " *Enter email"; } ?></p>
+      <p class= "errror"><?php if(isset($_SESSION['email'])) {
+    $message = $_SESSION['email'];
+    unset($_SESSION['email']);
+    echo $message;
+} ?></p>
 
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Password</label>
       <input type="password" name="password" value = "<?php echo "$password"?>"  class="form-control" id="inputPassword4" placeholder="Password">
-      <p class= "errror"><?php if(isset($_GET['password'])){echo "*Enter password"; } ?></p>
+      <p class= "errror"><?php if(isset($_SESSION['password'])) {
+    $message = $_SESSION['password'];
+    unset($_SESSION['password']);
+    echo $message;
+}?></p>
     </div>
   </div>
   <div class="form-group">
     <label for="inputAddress">Address</label>
     <input type="text" name="address"  value = "<?php echo "$address"?>" class="form-control" id="inputAddress" placeholder="1234 Main St">
-    <p class= "errror"><?php if(isset($_GET['address'])){echo " *Enter Address"; } ?></p>
+    <p class= "errror"><?php if(isset($_SESSION['address'])) {
+    $message = $_SESSION['address'];
+    unset($_SESSION['address']);
+    echo $message;
+} ?></p>
 </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputCity">Date of birth</label>
       <input type="date" name="dob" value = "<?php echo "$dob"?>"  class="form-control" id="inputCity">
-      <p class= "errror"><?php if(isset($_GET['dob'])){echo "*Enter Date of birth"; } ?></p>
+      <p class= "errror"><?php if(isset($_SESSION['dob'])) {
+    $message = $_SESSION['dob'];
+    unset($_SESSION['dob']);
+    echo $message;
+}?></p>
     </div>
     <br>
     

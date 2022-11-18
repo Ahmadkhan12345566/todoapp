@@ -16,7 +16,7 @@
 
 <div class="col-md-12 text-center">
 
-<a href="index.php"><button class="btn btn-primary"> click here to display record </button></a>
+<a href="index.php"><button class="btn btn-primary"> Display Record</button></a>
 </div>
 
 
@@ -62,7 +62,7 @@
     </div>
     <br>
     
-  <button type="submit" name = "register_form" class="btn btn-primary">Sign in</button>
+  <button type="submit" name = "register_form" class="btn btn-primary">Submit</button>
 </form>
 </div>
 

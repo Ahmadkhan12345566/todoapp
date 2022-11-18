@@ -19,7 +19,7 @@ include 'connect.php';
 <div class="container">
     <div class="row">
         <div class="btn float-right .text-right">
-            <a href="register.php"><button type="button" class="btn btn-primary">Add record</button>
+            <a href="register.php"><button type="button" class="btn btn-primary">Add Record</button>
 </a>
         
         </div>
@@ -27,14 +27,14 @@ include 'connect.php';
     <table class="table table-dark table-striped">
         <thead>
             <tr>
-              <th scope="col">id</th>
+              <th scope="col">#</th>
               <th scope="col">First Name</th>
               <th scope="col">Second Name</th>
-              <th scope="col">email</th>
-              <th scope="col">address</th>
-              <th scope="col">dob</th>
-              <th scope="col">password</th>
-              <th scope="col">operations</th>
+              <th scope="col">Email</th>
+              <th scope="col">Address</th>
+              <th scope="col">DOB</th>
+              <th scope="col">Password</th>
+              <th scope="col">Operations</th>
             </tr>
         </thead>
         <tbody>
@@ -67,9 +67,9 @@ include 'connect.php';
               <td>'.$password.'</td>
               <td>
             
-            <a href="update.php?updateid='.$id.' "><button class = "btn btn-primary">update</button></a>
+            <a href="update.php?updateid='.$id.' "><button class = "btn btn-primary">Update</button></a>
             
-            <a href="connect.php?deleteid='.$id.' "><button class = "btn btn-danger">delete</button> </a>
+            <a href="connect.php?deleteid='.$id.' "><button class = "btn btn-danger">Delete</button> </a>
         </td>
             </tr>
             
