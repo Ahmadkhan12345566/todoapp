@@ -41,7 +41,7 @@ $password= $row['password'];
 
 
 <div class = "container">
-<form action= "connect.php" method= "post">
+<form action= "api.php" method= "post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php echo "$id"?>">
   <div class="form-row">
   <div class="form-group col-md-6">
@@ -82,6 +82,19 @@ if(isset($_SESSION['first_name'])) {
     unset($_SESSION['password']);
     echo $message;
 }?></p>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Add Profile Image</label>
+      <input type="file"  name="profile_image" class="form-control" id="inputimage"  >
+
+      <p class= "errror"><?php if(isset($_SESSION['Image_size'])){
+        $message = $_SESSION['Image_size'];
+        unset($_SESSION['Image_size']);
+        echo $message; }
+      elseif(isset($_SESSION['Image_type'])){$message = $_SESSION['Image_type'];
+        unset($_SESSION['Image_type']);
+        echo $message;} ?></p>
+
     </div>
   </div>
   <div class="form-group">

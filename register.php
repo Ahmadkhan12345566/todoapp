@@ -24,7 +24,8 @@ session_start();
 
 
 <div class = "container">
-<form  action ="connect.php" method= "post" enctype="multipart/form-data">
+<form  action ="api.php" method= "post" enctype="multipart/form-data">
+
   <div class="form-row">
   <div class="form-group col-md-6">
       <label for="inputEmail4">First Name</label>
