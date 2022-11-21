@@ -11,6 +11,7 @@ $second_name= $row['second_name'];
 $email= $row['email'];
 $address= $row['address'];
 $dob= $row['dob'];
+$profile_image= $row['profile_img'];
 $password= $row['password'];
 
 
@@ -24,7 +25,7 @@ $password= $row['password'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="public/assets/style.css">
     <title>Document</title>
 </head>
 <body>
@@ -40,7 +41,7 @@ $password= $row['password'];
 
 
 <div class = "container">
-<form action= "api.php" method= "post">
+<form action= "api.php" method= "post" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?php echo "$id"?>">
   <div class="form-row">
   <div class="form-group col-md-6">
@@ -57,9 +58,9 @@ if(isset($_SESSION['first_name'])) {
       <label for="inputEmail4">Second Name</label>
       <input type="text"  name="second_name" value = "<?php echo "$second_name"?>" class="form-control" id="inputEmail4" placeholder="Second Name">
       <p class= "errror"><?php if(isset($_SESSION['second_name'])) {
-    $message = $_SESSION['second_name'];
-    unset($_SESSION['second_name']);
-    echo $message;
+        $message = $_SESSION['second_name'];
+       unset($_SESSION['second_name']);
+       echo $message;
 }?></p>
 
     </div>
@@ -81,6 +82,19 @@ if(isset($_SESSION['first_name'])) {
     unset($_SESSION['password']);
     echo $message;
 }?></p>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Add Profile Image</label>
+      <input type="file"  name="profile_image" class="form-control" id="inputimage"  >
+
+      <p class= "errror"><?php if(isset($_SESSION['Image_size'])){
+        $message = $_SESSION['Image_size'];
+        unset($_SESSION['Image_size']);
+        echo $message; }
+      elseif(isset($_SESSION['Image_type'])){$message = $_SESSION['Image_type'];
+        unset($_SESSION['Image_type']);
+        echo $message;} ?></p>
+
     </div>
   </div>
   <div class="form-group">

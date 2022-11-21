@@ -2,7 +2,6 @@
 <?php
 include 'database.php';
 
-
 ?>
 
 <!DOCTYPE html>
@@ -32,6 +31,7 @@ include 'database.php';
               <th scope="col">Second Name</th>
               <th scope="col">Email</th>
               <th scope="col">Address</th>
+              <th scope="col">Profile Image</th>
               <th scope="col">DOB</th>
               <th scope="col">Password</th>
               <th scope="col">Operations</th>
@@ -53,6 +53,7 @@ include 'database.php';
             $second_name= $row['second_name'];
             $email= $row['email'];
             $address= $row['address'];
+            $profile_image = $row['profile_img'];
             $dob= $row['dob'];
             $password= $row['password'];
             echo ' 
@@ -63,6 +64,7 @@ include 'database.php';
               <td>'.$second_name.'</td>
               <td>'.$email.'</td>
               <td>'.$address.'</td>
+              <td> <img src="public/upload'.$profile_image.'" height ="90px" width= "90px"/></td>
               <td>'.$dob.'</td>
               <td>'.$password.'</td>
               <td>
