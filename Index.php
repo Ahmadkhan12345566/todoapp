@@ -1,6 +1,6 @@
 
 <?php
-include 'connect.php';
+include 'database.php';
 
 
 ?>
@@ -69,7 +69,7 @@ include 'connect.php';
             
             <a href="update.php?updateid='.$id.' "><button class = "btn btn-primary">Update</button></a>
             
-            <a href="connect.php?deleteid='.$id.' "><button class = "btn btn-danger">Delete</button> </a>
+            <a href="api.php?deleteid='.$id.' "><button class = "btn btn-danger">Delete</button> </a>
         </td>
             </tr>
             
