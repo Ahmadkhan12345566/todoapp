@@ -39,30 +39,71 @@ include "database.php";
         exit();
     }
     else{
-        $profile_image= $_FILES['profile_image'];
-        //saving profile details in variable
-        $file_name =$profile_image['name'];
-        $file_error =$profile_image['error'];
-        $file_temp= $profile_image['tmp_name'];
-        //separating extension from file name
-        $file_ext = explode('.',$file_name);
+        if ($_FILES["profile_image"]["size"] > 1000000) {
+            $_SESSION['Image_size']= "*Image size is greater then 5mb";
+            exit();
+    }
+    else{
+        $file_ext = explode(".",$_FILES["profile_image"]["name"]) ;
+        $image_file_type = strtolower(end($file_ext)) ;
+        if($image_file_type != "jpg" && $image_file_type != "png" && $image_file_type != "jpeg" && $image_file_type != "gif" ) {
+        $_SESSION['Image_type']= "*Image type error";
+        exit();
+        }else{
+        $temp = explode(".", $_FILES["profile_image"]["name"]);
+        $newfilename = round(microtime(true)) . '.' . end($temp);
+        $uploaded_file =move_uploaded_file($_FILES["profile_image"]["tmp_name"], "public/upload" . $newfilename);
         
-        //converting file to lowercase
         
-        
-
-
-        $file_check = strtolower(end($file_ext));
-        $newfilename = round(microtime(true)) . '.' . end($file_ext);
-
-        //
-        $file_ext_stored = array('jpg','png','jpeg');
-
-        if(in_array($file_check,$file_ext_stored)){
-            $destination_file = 'profile_images/'.$file_name;
-            $uploaded_file = move_uploaded_file($_FILES["file"]["tmp_name"], "upload/" . $newfilename);
-            
         }
+        }
+        
+        // if ($_FILES["profile_image"]["size"] > 500000) {
+        //     $_SESSION['Image_size']= "*Image size is greater then 5mb";
+        //     header('location:register.php');
+        //     exit();
+
+           
+        //   }
+        //   else{
+        //     $image_file_type = strtolower($_FILES["profile_image"]["type"]) ;
+        //     if($image_file_type != "jpg" && $image_file_type != "png" && $image_file_type != "jpeg" && $image_file_type != "gif" ) {
+        //     $_SESSION['Image_type']= "*Image type error";
+        //     header('location:register.php');
+        //     exit();
+                
+        //     }
+        //     else{
+        //         $temp = explode(".", $_FILES["profile_image"]["name"]);
+        //         $newfilename = round(microtime(true)) . '.' . end($temp);
+        //         $uploaded_file =move_uploaded_file($_FILES["profile_image"]["tmp_name"], "public/upload/profile_image" . $newfilename);
+        //     }
+            
+        //   }
+        // $profile_image= $_FILES['profile_image'];
+        // //saving profile details in variable
+        // $file_name =$profile_image['name'];
+        // $file_error =$profile_image['error'];
+        // $file_temp= $profile_image['tmp_name'];
+        // //separating extension from file name
+        // $file_ext = explode('.',$file_name);
+        
+        // //converting file to lowercase
+        
+        
+
+
+        // $file_check = strtolower(end($file_ext));
+        // $newfilename = round(microtime(true)) . '.' . end($file_ext);
+
+        // //
+        // $file_ext_stored = array('jpg','png','jpeg');
+
+        // if(in_array($file_check,$file_ext_stored)){
+        //     $destination_file = '/public/assets'.$file_name;
+        //     $uploaded_file = move_uploaded_file($_FILES["file"]["tmp_name"], "/" . $newfilename);
+            
+        // }
     }
     
     
@@ -83,7 +124,7 @@ include "database.php";
     
 
     $sql = "INSERT INTO users (first_name, second_name,email,profile_img,address,dob,password)
-     value('$first_name', '$second_name','$email','$uploaded_file','$address','$dob', '$password')";
+     value('$first_name', '$second_name','$email','$newfilename','$address','$dob', '$password')";
      $result = mysqli_query($con,$sql);
      if($result)
      {

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -5,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="public/assets/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <title>Document</title>
 </head>
@@ -50,7 +53,13 @@
   <div class="form-group col-md-6">
       <label for="inputEmail4">Add Profile Image</label>
       <input type="file"  name="profile_image" class="form-control" id="inputimage"  >
-      <p class= "errror"><?php if(isset($_GET['profile_image'])){echo " *Please Select picture"; } ?></p>
+      <p class= "errror"><?php if(isset($_session['Image_size'])){
+        $message = $_SESSION['Image_size'];
+        unset($_SESSION['Image_size']);
+        echo $message; }
+      elseif(isset($_session['Image_type'])){$message = $_SESSION['Image_type'];
+        unset($_SESSION['Image_type']);
+        echo $message;} ?></p>
 
     </div>
   <div class="form-group">

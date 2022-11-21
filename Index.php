@@ -2,7 +2,6 @@
 <?php
 include 'connect.php';
 
-
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +64,7 @@ include 'connect.php';
               <td>'.$second_name.'</td>
               <td>'.$email.'</td>
               <td>'.$address.'</td>
-              <td> <img src=" '.$profile_image.'" width="90" height="90" alt=""></td>
+              <td> <img src="public/upload'.$profile_image.'" height ="90px" width= "90px"/></td>
               <td>'.$dob.'</td>
               <td>'.$password.'</td>
               <td>
