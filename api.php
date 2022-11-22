@@ -205,7 +205,42 @@ include "database.php";
     
     }
 
+//exporting  csv file 
+if(isset($_POST['export'])){
+    header('Content-Type: text/csv;');
+    header('Content-Disposition: attachment; filename="data.csv"');
+    $output = fopen("php://output", "w");
+    fputcsv($output, array('id','first_name', 'second_name','email','address','password','dob','profile_img'));
+    $query = " SELECT * FROM users ORDER BY id DESC";
+    $result = mysqli_query($con, $query);
+    while($row = mysqli_fetch_assoc($result)){
+        fputcsv($output,$row);
+    }
+    fclose($output);
+}
 
+//reading csv file '
+
+if(isset($_POST['import_file'])){
+    if(empty($_FILES['file'])){
+        die("error");
+    }
+    else{
+
+    
+    $temp = $_FILES['file']['tmp_name'];
+        $handle = fopen($temp,'r');
+        while(($line=fgetcsv($handle, 1000, ","))!==false)
+        {
+            $sql= "INSERT INTO users (first_name, second_name,email,address,password,dob,profile_img) VALUES ('$line[1]','$line[2]','$line[3]','$line[4]','$line[5]','$line[6]','$line[7]')";
+            $result = mysqli_query($con,$sql);
+
+            header('location:index.php');
+        }
+        fclose($temp);
+        die();
+    }
+    }
 
 
 ?>
