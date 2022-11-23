@@ -9,3 +9,16 @@
     color: red;
     
 }
+.body {
+
+	display: grid;
+	grid-template-columns: auto;
+	color: #566787;
+	background: black;
+	font-family: 'Varela Round', sans-serif;
+	font-size: 13px;
+}
+.nav-bar-buton{
+	float: right;
+	background-color: #566787;
+}

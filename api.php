@@ -142,12 +142,12 @@ include "database.php";
         }
         
         else{
-            if ($_FILES["profile_image"]["size"] > 1) {
+            if ($_FILES["profile_image"]["size"] > 500000) {
                 var_dump($_FILES["profile_image"]["size"]);
                 $_SESSION['Image_size']= "*Image size is greater then 5mb";
                 header('location:update.php?updateid='.$id.'');
                 exit();
-        }
+            }
         else{
             $file_ext = explode(".",$_FILES["profile_image"]["name"]) ;
             $image_file_type = strtolower(end($file_ext)) ;
@@ -158,7 +158,6 @@ include "database.php";
             $temp = explode(".", $_FILES["profile_image"]["name"]);
             $newfilename = round(microtime(true)) . '.' . end($temp);
             $uploaded_file =move_uploaded_file($_FILES["profile_image"]["tmp_name"], "public/upload" . $newfilename);
-            die();
             
             }
             }
