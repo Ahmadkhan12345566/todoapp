@@ -242,4 +242,93 @@ if(isset($_POST['import_file'])){
     }
 
 
+
+
+/// Adding product detail to database 
+if(isset($_POST['product_add'])){
+    if(empty($_POST['manufacturer_name'])){
+            $_SESSION['manufacturer_name']="*Enter Manufacturer Detail";
+            exit();
+
+        }else{
+
+            $manufacturer_name = $_POST['manufacturer_name'];
+        }
+        
+    if(empty($_POST['manufacturer_name'])){
+            $_SESSION['manufacturer_name']="*Enter Manufacturer Detail";
+            exit();
+
+        }else{
+
+            $manufacturer_name = $_POST['manufacturer_name'];
+        }
+        if(empty($_POST['manufacturer_name'])){
+            $_SESSION['manufacturer_name']="*Enter Manufacturer Detail";
+            exit();
+
+        }else{
+
+            $manufacturer_name = $_POST['manufacturer_name'];
+        }
+        if(empty($_POST['manufacturer_name'])){
+            $_SESSION['manufacturer_name']="*Enter Manufacturer Detail";
+            exit();
+
+        }else{
+
+            $manufacturer_name = $_POST['manufacturer_name'];
+        }
+        if(empty($_POST['manufacturer_name'])){
+            $_SESSION['manufacturer_name']="*Enter Manufacturer Detail";
+            exit();
+
+        }else{
+
+            $manufacturer_name = $_POST['manufacturer_name'];
+        }
+        if(empty($_POST['manufacturer_name'])){
+            $_SESSION['manufacturer_name']="*Enter Manufacturer Detail";
+            exit();
+
+        }else{
+
+            $manufacturer_name = $_POST['manufacturer_name'];
+        }
+        if(empty($_POST['manufacturer_name'])){
+            $_SESSION['manufacturer_name']="*Enter Manufacturer Detail";
+            exit();
+
+        }else{
+
+            $manufacturer_name = $_POST['manufacturer_name'];
+        }
+        if(empty($_POST['manufacturer_name'])){
+            $_SESSION['manufacturer_name']="*Enter Manufacturer Detail";
+            exit();
+
+        }else{
+
+            $manufacturer_name = $_POST['manufacturer_name'];
+        }
+        if(empty($_POST['manufacturer_name'])){
+            $_SESSION['manufacturer_name']="*Enter Manufacturer Detail";
+            exit();
+
+        }else{
+
+            $manufacturer_name = $_POST['manufacturer_name'];
+        }
+        if(empty($_POST['manufacturer_name'])){
+            $_SESSION['manufacturer_name']="*Enter Manufacturer Detail";
+            exit();
+
+        }else{
+
+            $manufacturer_name = $_POST['manufacturer_name'];
+        }
+
+
+}
+
 ?>
