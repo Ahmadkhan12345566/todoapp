@@ -78,7 +78,6 @@ include 'database.php';
               <th scope="col">Address</th>
               <th scope="col">Profile Image</th>
               <th scope="col">DOB</th>
-              <th scope="col">Password</th>
               <th scope="col">Operations</th>
             </tr>
         </thead>
@@ -114,7 +113,6 @@ include 'database.php';
               <td>'.$address.'</td>
               <td> <img src="public/upload'.$profile_image.'" height ="90px" width= "90px"/></td>
               <td>'.$dob.'</td>
-              <td>####</td>
               <td>
             
             <a href="update.php?updateid='.$id.' "><button class = "btn btn-primary">Update</button></a>
