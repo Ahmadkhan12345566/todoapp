@@ -239,10 +239,11 @@ if(isset($_POST['import_file'])){
         fclose($temp);
         die();
     }
-    }
+}
 
 
 
+///Dealing with products from here
 
 /// Adding product detail to database 
 if(isset($_POST['product_add'])){
@@ -254,81 +255,205 @@ if(isset($_POST['product_add'])){
 
             $manufacturer_name = $_POST['manufacturer_name'];
         }
+
+    if(empty($_POST['medicine_name'])){
+            $_SESSION['medicine_name']="*Enter Manufacturer Detail";
+            exit();
+
+        }else{
+
+            $medicine_name = $_POST['medicine_name'];
+        }
+        if(empty($_POST['generic_name'])){
+            $_SESSION['generic_name']="*Enter Manufacturer Detail";
+            exit();
+
+        }else{
+
+            $generic_name = $_POST['generic_name'];
+        }
+        if(empty($_POST['strength'])){
+            $_SESSION['strength']="*Enter Manufacturer Detail";
+            exit();
+
+        }else{
+
+            $strength = $_POST['strength'];
+        }
+        if(empty($_POST['category_name'])){
+            $_SESSION['category_name']="*Enter Manufacturer Detail";
+            exit();
+
+        }else{
+
+            $category_name = $_POST['category_name'];
+        }
+        if(empty($_POST['manufacturer_price'])){
+            $_SESSION['manufacturer_price']="*Enter Manufacturer Detail";
+            exit();
+
+        }else{
+
+            $manufacturer_price = $_POST['manufacturer_price'];
+        }
+        if(empty($_POST['sale_price'])){
+            $_SESSION['sale_price']="*Enter Manufacturer Detail";
+            exit();
+
+        }else{
+
+            $sale_price = $_POST['sale_price'];
+        }
+        if(empty($_POST['pe_no'])){
+            $_SESSION['pe_no']="*Enter Manufacturer Detail";
+            exit();
+
+        }else{
+
+            $pe_no = $_POST['pe_no'];
+        }
+        if(empty($_POST['unit'])){
+            $_SESSION['unit']="*Enter Manufacturer Detail";
+            exit();
+
+        }else{
+
+            $unit = $_POST['unit'];
+        }
+        if(empty($_POST['medicine_type'])){
+            $_SESSION['medicine_type']="*Enter Manufacturer Detail";
+            exit();
+
+        }else{
+
+            $medicine_type = $_POST['medicine_type'];
+        }
         
-    if(empty($_POST['manufacturer_name'])){
-            $_SESSION['manufacturer_name']="*Enter Manufacturer Detail";
-            exit();
+        $sql ="INSERT INTO `products` (`manufacturer_name`, `medicine_name`, `generic_name`, `strength`, `category_name`, `manufacturer_price`, `sale_price`, `pe_no`, `unit`, `medicine_type`) VALUES ('$manufacturer_name', '$medicine_name', '$generic_name', '$strength', '$category_name', $manufacturer_price, $sale_price, $pe_no, '$unit', '$medicine_type')";
 
-        }else{
+        $result= mysqli_query($con,$sql);
 
-            $manufacturer_name = $_POST['manufacturer_name'];
+
+        if($result){
+            header('location:products.php');
         }
-        if(empty($_POST['manufacturer_name'])){
-            $_SESSION['manufacturer_name']="*Enter Manufacturer Detail";
-            exit();
-
-        }else{
-
-            $manufacturer_name = $_POST['manufacturer_name'];
+        else{
+            die(mysqli_error($result));
         }
-        if(empty($_POST['manufacturer_name'])){
-            $_SESSION['manufacturer_name']="*Enter Manufacturer Detail";
-            exit();
-
-        }else{
-
-            $manufacturer_name = $_POST['manufacturer_name'];
-        }
-        if(empty($_POST['manufacturer_name'])){
-            $_SESSION['manufacturer_name']="*Enter Manufacturer Detail";
-            exit();
-
-        }else{
-
-            $manufacturer_name = $_POST['manufacturer_name'];
-        }
-        if(empty($_POST['manufacturer_name'])){
-            $_SESSION['manufacturer_name']="*Enter Manufacturer Detail";
-            exit();
-
-        }else{
-
-            $manufacturer_name = $_POST['manufacturer_name'];
-        }
-        if(empty($_POST['manufacturer_name'])){
-            $_SESSION['manufacturer_name']="*Enter Manufacturer Detail";
-            exit();
-
-        }else{
-
-            $manufacturer_name = $_POST['manufacturer_name'];
-        }
-        if(empty($_POST['manufacturer_name'])){
-            $_SESSION['manufacturer_name']="*Enter Manufacturer Detail";
-            exit();
-
-        }else{
-
-            $manufacturer_name = $_POST['manufacturer_name'];
-        }
-        if(empty($_POST['manufacturer_name'])){
-            $_SESSION['manufacturer_name']="*Enter Manufacturer Detail";
-            exit();
-
-        }else{
-
-            $manufacturer_name = $_POST['manufacturer_name'];
-        }
-        if(empty($_POST['manufacturer_name'])){
-            $_SESSION['manufacturer_name']="*Enter Manufacturer Detail";
-            exit();
-
-        }else{
-
-            $manufacturer_name = $_POST['manufacturer_name'];
-        }
-
 
 }
 
+
+//deleting Medicine/product from database
+if(isset($_GET['product_delete']))
+{
+    $id= $_GET['product_delete'];
+    $sql = "DELETE FROM products WHERE product_id=$id";
+    $result= mysqli_query($con,$sql);
+    if($result)
+    {
+        header('location:products.php');
+    }
+    else{
+        die(mysqli_error($result));
+    }
+}
+
+
+
+//updating products in table 
+if(isset($_POST['update_product'])){
+    $id= $_POST['id'];
+    if(empty($_POST['manufacturer_name'])){
+        $_SESSION['manufacturer_name']="*Enter Manufacturer Detail";
+        exit();
+
+    }else{
+
+        $manufacturer_name = $_POST['manufacturer_name'];
+    }
+
+if(empty($_POST['medicine_name'])){
+        $_SESSION['medicine_name']="*Enter Manufacturer Detail";
+        exit();
+
+    }else{
+
+        $medicine_name = $_POST['medicine_name'];
+    }
+    if(empty($_POST['generic_name'])){
+        $_SESSION['generic_name']="*Enter Manufacturer Detail";
+        exit();
+
+    }else{
+
+        $generic_name = $_POST['generic_name'];
+    }
+    if(empty($_POST['strength'])){
+        $_SESSION['strength']="*Enter Manufacturer Detail";
+        exit();
+
+    }else{
+
+        $strength = $_POST['strength'];
+    }
+    if(empty($_POST['category_name'])){
+        $_SESSION['category_name']="*Enter Manufacturer Detail";
+        exit();
+
+    }else{
+
+        $category_name = $_POST['category_name'];
+    }
+    if(empty($_POST['muanufacturer_price'])){
+        $_SESSION['manufacturer_price']="*Enter Manufacturer Detail";
+        exit();
+
+    }else{
+
+        $manufacturer_price = $_POST['manufacturer_price'];
+    }
+    if(empty($_POST['sale_price'])){
+        $_SESSION['sale_price']="*Enter Manufacturer Detail";
+        exit();
+
+    }else{
+
+        $sale_price = $_POST['sale_price'];
+    }
+    if(empty($_POST['pe_no'])){
+        $_SESSION['pe_no']="*Enter Manufacturer Detail";
+        exit();
+
+    }else{
+
+        $pe_no = $_POST['pe_no'];
+    }
+    if(empty($_POST['unit'])){
+        $_SESSION['unit']="*Enter Manufacturer Detail";
+        exit();
+
+    }else{
+
+        $unit = $_POST['unit'];
+    }
+    if(empty($_POST['medicine_type'])){
+        $_SESSION['medicine_type']="*Enter Manufacturer Detail";
+        exit();
+
+    }else{
+
+        $medicine_type = $_POST['medicine_type'];
+    }
+    $sql= "UPDATE products SET manufacturer_name= '$manufacturer_name', medicine_name='$medicine_name', generic_name='$generic_name', strength='$strength', category_name='$category_name',manufacturer_price='$manufacturer_price', sale_price='$sale_price',pe_no='$pe_no',unit='$unit',medicine_type='$medicine_type' where product_id=$id";
+    $result= mysqli_query($con,$sql);
+    
+    if($result){
+        header('location:products.php');
+    }
+    else{
+        die(mysqli_error($result));
+    }
+    die();
+}
 ?>
