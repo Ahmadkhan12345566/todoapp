@@ -39,7 +39,7 @@ $medicine_type= $row['medicine_type'];
 <fieldset>
 
 <!-- Form Name -->
-<legend><center><h2><b>Add Product</b></h2></center></legend><br>
+<legend><center><h2><b>Update Product</b></h2></center></legend><br>
 
 <!-- Text input-->
 <input type="hidden" name="id" value="<?php echo "$id"?>">
@@ -165,7 +165,7 @@ $medicine_type= $row['medicine_type'];
 <div class="form-group">
 <label class="col-md-4 control-label"></label>
 <div class="col-md-4"><br>
-<button type="submit" name="update_product" class="btn btn-warning" >SUBMIT <span class="glyphicon glyphicon-send"></span></button>
+<button type="submit" name="update_product" class="btn btn-warning" >Update <span class="glyphicon glyphicon-send"></span></button>
 </div>
 </div>
 

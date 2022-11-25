@@ -236,7 +236,7 @@ if(isset($_POST['import_file'])){
 
             header('location:index.php');
         }
-        fclose($temp);
+        fclose($handle);
         die();
     }
 }
@@ -372,8 +372,7 @@ if(isset($_POST['update_product'])){
 
         $manufacturer_name = $_POST['manufacturer_name'];
     }
-
-if(empty($_POST['medicine_name'])){
+    if(empty($_POST['medicine_name'])){
         $_SESSION['medicine_name']="*Enter Manufacturer Detail";
         exit();
 
@@ -445,7 +444,7 @@ if(empty($_POST['medicine_name'])){
 
         $medicine_type = $_POST['medicine_type'];
     }
-    $sql= "UPDATE products SET manufacturer_name= '$manufacturer_name', medicine_name='$medicine_name', generic_name='$generic_name', strength='$strength', category_name='$category_name',manufacturer_price='$manufacturer_price', sale_price='$sale_price',pe_no='$pe_no',unit='$unit',medicine_type='$medicine_type' where product_id=$id";
+    $sql= "UPDATE products set manufacturer_name= '$manufacturer_name', medicine_name='$medicine_name', generic_name='$generic_name', strength='$strength', category_name='$category_name',manufacturer_price='$manufacturer_price', sale_price='$sale_price',pe_no='$pe_no',unit='$unit',medicine_type='$medicine_type' where product_id=$id";
     $result= mysqli_query($con,$sql);
     
     if($result){
@@ -454,6 +453,42 @@ if(empty($_POST['medicine_name'])){
     else{
         die(mysqli_error($result));
     }
-    die();
 }
+
+//Exporting Products table:
+if(isset($_POST['export_products_data'])){
+    header('Content-Type: text/cxv');
+    header('Content-Disposition: attachment; filename="Products.csv"');
+    $output= fopen("php://output","w");
+    fputcsv($output,array('Id','Manufacturer Name','Medicine Name', 'Generic Name','Srength','Category Name','Manufacturer Price','Sale Price','P.E No.','Unit','Medicine Type'));
+    $sql= "SELECT * FROM products ORDER BY product_id DESC";
+    $result= mysqli_query($con,$sql);
+    while($row=mysqli_fetch_assoc($result)){
+        fputcsv($output,$row);
+    }
+    fclose($output);
+}
+
+
+//Importing data from Csv file 
+
+if(isset($_POST['import_products'])){
+    if(empty($_FILES['file'])){
+        die("error");
+    }
+    else{
+        $temp= $_FILES['file']['tmp_name'];
+        $handle= fopen($temp,'r');
+        while(($line=fgetcsv($handle, 1000, ","))!==false){
+            
+            $sql= "INSERT INTO `products`(`product_id`, `manufacturer_name`, `medicine_name`, `generic_name`, `strength`, `category_name`, `manufacturer_price`, `sale_price`, `pe_no`, `unit`, `medicine_type`) VALUES ('$line[1]','$line[2]','$line[3]','$line[4]','$line[5]','$line[6]','$line[7]','$line[8]','$line[9]','$line[10]','$line[11]')";
+            $result=mysqli_query($con,$sql);
+            header('location:products.php');
+            
+        }
+        
+        fclose($handle);
+    }
+}
+
 ?>

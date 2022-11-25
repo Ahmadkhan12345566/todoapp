@@ -13,6 +13,25 @@ include 'database.php';
     <title>Document</title>
 </head>
 <body>
+<form action="api.php" method= "post" > 
+    <div class="row">
+        <div class="btn float-right .text-right">
+            
+        <button type="submit" name= "export_products_data" value= "CSV Export" class="btn btn-primary">EXPORT Data</button>
+        </div>
+    </div>   
+        
+    </form>
+    <form action="api.php" method= "post"  enctype="multipart/form-data">
+    <div class="row">
+        <div class="btn float-right .text-right">
+            
+            <a href="api.php"><input type="file" name= "file"></a>
+            <button type="submit" name= "import_products" value= "CSV import" class="btn btn-primary">Import file</button>
+        
+        </div>
+    </div>
+    </form>
 <table class="table table-dark table-striped">
         <thead>
             <tr>

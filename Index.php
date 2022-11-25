@@ -67,6 +67,7 @@ include 'database.php';
         
         </div>
     </div>
+    </form>
     
     <table class="table table-dark table-striped">
         <thead>
