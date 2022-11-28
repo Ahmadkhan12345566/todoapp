@@ -1,6 +1,15 @@
 <?php
-session_start();
 include "database.php";
+require 'vendor/autoload.php';
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use Phppot\DataSource;
+use PhpOffice\PhpSpreadsheet\Writer\IWriter;
+
+session_start();
+
 
 //adding data to the table
  if(isset($_POST['register_form'])){
@@ -224,10 +233,8 @@ if(isset($_POST['import_file'])){
     if(empty($_FILES['file'])){
         die("error");
     }
-    else{
-
-    
-    $temp = $_FILES['file']['tmp_name'];
+    else{ 
+        $temp = $_FILES['file']['tmp_name'];
         $handle = fopen($temp,'r');
         while(($line=fgetcsv($handle, 1000, ","))!==false)
         {
@@ -461,7 +468,7 @@ if(isset($_POST['export_products_data'])){
     header('Content-Disposition: attachment; filename="Products.csv"');
     $output= fopen("php://output","w");
     fputcsv($output,array('Id','Manufacturer Name','Medicine Name', 'Generic Name','Srength','Category Name','Manufacturer Price','Sale Price','P.E No.','Unit','Medicine Type'));
-    $sql= "SELECT * FROM products ORDER BY product_id DESC";
+    $sql= "SELECT * FROM products ORDER BY product_id";
     $result= mysqli_query($con,$sql);
     while($row=mysqli_fetch_assoc($result)){
         fputcsv($output,$row);
@@ -479,16 +486,17 @@ if(isset($_POST['import_products'])){
     else{
         $temp= $_FILES['file']['tmp_name'];
         $handle= fopen($temp,'r');
+        $line=fgetcsv($handle, 1000, ",");
         while(($line=fgetcsv($handle, 1000, ","))!==false){
             
-            $sql= "INSERT INTO `products`(`product_id`, `manufacturer_name`, `medicine_name`, `generic_name`, `strength`, `category_name`, `manufacturer_price`, `sale_price`, `pe_no`, `unit`, `medicine_type`) VALUES ('$line[1]','$line[2]','$line[3]','$line[4]','$line[5]','$line[6]','$line[7]','$line[8]','$line[9]','$line[10]','$line[11]')";
+            $sql= "INSERT INTO products (product_id,manufacturer_name,medicine_name,generic_name,strength, category_name,manufacturer_price,sale_price,pe_no,unit,medicine_type) VALUES ('Null','$line[1]','$line[2]','$line[3]','$line[4]','$line[5]','$line[6]','$line[7]','$line[8]','$line[9]','$line[10]')";
             $result=mysqli_query($con,$sql);
             header('location:products.php');
-            
-        }
         
+        }
         fclose($handle);
     }
 }
+
 
 ?>
